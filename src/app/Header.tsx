@@ -14,7 +14,7 @@ export default function Header() {
         <Link href="/cart" className="hover:underline">Cart</Link>
         <Link href="/profile" className="hover:underline">Profile</Link>
       </nav>
-      <UserButton />
+      <UserButton afterSignOutUrl="/sign-in" />
     </header>
   );
 }
