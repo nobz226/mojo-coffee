@@ -1,20 +1,77 @@
 "use client";
+
 import Link from "next/link";
 import { UserButton } from "@clerk/nextjs";
+import { useQuery } from "convex/react";
+import { api } from "../../convex/_generated/api";
+import { useConvexUser } from "@/hooks/useConvexUser";
 
 export default function Header() {
+  const { convexUser } = useConvexUser();
+  const cart = useQuery(
+    api.cart.getUserCart,
+    convexUser ? { userId: convexUser._id } : "skip"
+  );
+
+  const itemCount = cart?.reduce((sum, item) => sum + item.quantity, 0) || 0;
+
   return (
-    <header className="bg-white shadow px-4 py-3 flex justify-between items-center">
-      <Link href="/" className="text-xl font-bold text-yellow-700">
-        Mojo Coffee
-      </Link>
-      <nav className="space-x-4">
-        <Link href="/" className="hover:underline">Home</Link>
-        <Link href="/products" className="hover:underline">Products</Link>
-        <Link href="/cart" className="hover:underline">Cart</Link>
-        <Link href="/profile" className="hover:underline">Profile</Link>
+    <header className="bg-black text-white">
+      <nav className="container mx-auto px-8 py-6 flex justify-between items-center">
+        {/* Logo */}
+        <Link href="/" className="text-4xl font-script italic">
+          Logo
+        </Link>
+
+        {/* Navigation Links */}
+        <div className="flex items-center gap-8">
+          <Link href="/" className="text-gray-300 hover:text-white transition">
+            Home
+          </Link>
+          <Link
+            href="/about"
+            className="text-gray-300 hover:text-white transition"
+          >
+            About Us
+          </Link>
+          <Link
+            href="/products"
+            className="text-green-400 hover:text-green-300 transition font-semibold"
+          >
+            Products
+          </Link>
+          <Link
+            href="/cart"
+            className="text-gray-300 hover:text-white transition relative"
+          >
+            Cart
+            {itemCount > 0 && (
+              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                {itemCount}
+              </span>
+            )}
+          </Link>
+          <Link
+            href="/profile"
+            className="text-gray-300 hover:text-white transition"
+          >
+            Profile
+          </Link>
+
+          {/* Order Ahead Button */}
+          <Link
+            href="/products"
+            className="px-6 py-2 border-2 border-white text-white hover:bg-white hover:text-black transition rounded"
+          >
+            Order Ahead
+          </Link>
+
+          {/* Login Button (UserButton replacement wrapper) */}
+          <div className="px-6 py-2 bg-[#8B9D83] text-white hover:bg-[#7a8a72] transition rounded flex items-center justify-center min-w-[80px]">
+            <UserButton afterSignOutUrl="/sign-in" />
+          </div>
+        </div>
       </nav>
-      <UserButton afterSignOutUrl="/sign-in" />
     </header>
   );
 }
