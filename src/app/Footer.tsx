@@ -10,9 +10,15 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo and Social Icons */}
           <div className="space-y-6">
-            <div className="bg-white p-6 rounded-lg inline-block">
-              <div className="text-5xl font-bold">mojo</div>
-            </div>
+            <Link href="/" className="inline-block">
+              <Image
+                src="/logo-footer.svg"
+                alt="Mojo Coffee - World's Finest Brewing Est. 2025"
+                width={150}
+                height={120}
+                priority
+              />
+            </Link>
             
             <div className="flex gap-4">
               {/* Instagram */}
@@ -67,8 +73,8 @@ export default function Footer() {
             <h3 className="text-2xl font-bold mb-6">Contact</h3>
             <div className="space-y-3 text-gray-800">
               <p>
-                <a href="mailto:askus@mokopottery.ca" className="hover:underline">
-                  askus@mokopottery.ca
+                <a href="mailto:askus@mojocoffee.ca" className="hover:underline">
+                  askus@mojocoffee.ca
                 </a>
               </p>
               <p>

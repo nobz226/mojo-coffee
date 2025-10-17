@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { UserButton } from "@clerk/nextjs";
 import { useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
@@ -16,11 +17,17 @@ export default function Header() {
   const itemCount = cart?.reduce((sum, item) => sum + item.quantity, 0) || 0;
 
   return (
-    <header className="bg-black text-white">
+    <header className="bg-[#3C2C25] text-white">
       <nav className="container mx-auto px-8 py-6 flex justify-between items-center">
         {/* Logo */}
-        <Link href="/" className="text-4xl font-script italic">
-          Logo
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/logo-header.svg"
+            alt="Mojo Coffee"
+            width={120}
+            height={60}
+            priority
+          />
         </Link>
 
         {/* Navigation Links */}
@@ -67,7 +74,7 @@ export default function Header() {
           </Link>
 
           {/* Login Button (UserButton replacement wrapper) */}
-          <div className="px-6 py-2 bg-[#8B9D83] text-white hover:bg-[#7a8a72] transition rounded flex items-center justify-center min-w-[80px]">
+          <div className="px-6 py-2 transition rounded flex items-center justify-center min-w-[80px]">
             <UserButton afterSignOutUrl="/sign-in" />
           </div>
         </div>
