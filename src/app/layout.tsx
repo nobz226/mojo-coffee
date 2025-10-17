@@ -1,6 +1,7 @@
 import './globals.css';
 import Providers from './Providers';
 import Header from './Header';
+import Footer from './Footer';
 import { SignedIn, SignedOut, RedirectToSignIn } from "@clerk/nextjs";
 
 export const metadata = {
@@ -20,9 +21,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <main className="flex-1 container mx-auto px-4 py-6">
               {children}
             </main>
-            <footer className="bg-white shadow px-4 py-3 text-center text-sm text-gray-500">
-              &copy; {new Date().getFullYear()} Mojo Coffee Shop
-            </footer>
+            <Footer />
           </SignedIn>
           <SignedOut>
             <RedirectToSignIn />
