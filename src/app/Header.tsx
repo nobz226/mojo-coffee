@@ -43,7 +43,7 @@ export default function Header() {
           </Link>
           <Link
             href="/products"
-            className="text-green-400 hover:text-green-300 transition font-semibold"
+            className="text-gray-300 hover:text-white transition"
           >
             Products
           </Link>

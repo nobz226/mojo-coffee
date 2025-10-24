@@ -9,10 +9,10 @@ export default function Home() {
   const products = useQuery(api.products.list);
 
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-amber-50 to-orange-100 py-20 px-4">
-        <div className="max-w-4xl mx-auto text-center">
+    <div className="min-h-screen -mx-4 md:-mx-8">
+      {/* Hero Section - Full Width */}
+      <section className="bg-gradient-to-br from-amber-50 to-orange-100 py-20 px-4 md:px-8 w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
+        <div className="text-center max-w-7xl mx-auto">
           <h1 className="text-5xl font-bold text-gray-900 mb-6">
             Premium Coffee, Delivered Fresh
           </h1>
@@ -29,7 +29,7 @@ export default function Home() {
       </section>
 
       {/* Popular Coffee Section */}
-      <section className="py-16 px-4 bg-white">
+      <section className="py-16 px-4 md:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="mb-8">
             <h3 className="text-sm font-bold text-gray-600 uppercase mb-2">
@@ -63,7 +63,7 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-16 px-4 bg-gray-50">
+      <section className="py-16 px-4 md:px-8 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <h3 className="text-3xl font-bold text-gray-900 mb-12">
             Why Choose Us?
@@ -136,7 +136,7 @@ export default function Home() {
       </section>
 
       {/* Newsletter Section */}
-      <section className="py-16 px-4 bg-gradient-to-r from-gray-400 to-gray-500">
+      <section className="py-16 px-4 md:px-8 bg-gradient-to-r from-gray-400 to-gray-500">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="text-white">
