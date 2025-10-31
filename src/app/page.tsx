@@ -2,160 +2,199 @@
 
 import { useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
-import ProductCard from "@/components/ProductCard";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
   const products = useQuery(api.products.list);
 
+  // Featured drinks with specific images
+  const featuredDrinks = [
+    {
+      id: 1,
+      name: "Mexican Spiced Chocolate Mocha",
+      image: "/feature1.jpeg",
+    },
+    {
+      id: 2,
+      name: "Peppermint Velvet Cold Brew",
+      image: "/feature2.jpeg",
+    },
+    {
+      id: 3,
+      name: "Turkish Delight Mocha",
+      image: "/feature3.jpeg",
+    },
+    {
+      id: 4,
+      name: "Gingerbread Latte Bliss",
+      image: "/gingerbread.jpeg",
+    },
+  ];
+
   return (
-    <div className="min-h-screen -mx-4 md:-mx-8">
-      {/* Hero Section - Full Width */}
-      <section className="bg-gradient-to-br from-amber-50 to-orange-100 py-20 px-4 md:px-8 w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
-        <div className="text-center max-w-7xl mx-auto">
-          <h1 className="text-5xl font-bold text-gray-900 mb-6">
-            Premium Coffee, Delivered Fresh
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="relative py-32 px-4 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/hero.jpeg"
+            alt="Mojo Coffee drinks"
+            fill
+            className="object-cover"
+            priority
+          />
+          {/* Overlay for better text readability */}
+          <div className="absolute inset-0 bg-[#E8D5C4]/60" />
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10 max-w-6xl mx-auto text-center">
+          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+            Discover Flavors Inspired By Coffee Cultures Around The World.
           </h1>
-          <p className="text-xl text-gray-700 mb-4 leading-relaxed max-w-2xl mx-auto">
-            Discover our handpicked selection of specialty coffee beans from around the world. 
-            Expertly roasted to perfection, sourced sustainably, and delivered to your door.
+          <p className="text-lg text-gray-900 mb-8 max-w-2xl mx-auto">
+            Discover flavors inspired by coffee cultures around the world.
           </p>
           <Link href="/products">
-            <button className="bg-amber-900 text-white px-8 py-3 rounded-full hover:bg-amber-800 transition-colors text-lg font-semibold">
-              Shop Now
+            <button className="bg-[#8B9D83] text-white px-10 py-4 rounded-full hover:bg-[#7a8a72] transition-colors text-lg font-semibold shadow-lg">
+              Explore Our Blends
             </button>
           </Link>
         </div>
       </section>
 
-      {/* Popular Coffee Section */}
-      <section className="py-16 px-4 md:px-8 bg-white">
+      {/* Featured Drinks Section */}
+      <section className="py-16 px-4 bg-[#8B9D83]">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-8">
-            <h3 className="text-sm font-bold text-gray-600 uppercase mb-2">
-              Featured Selection
-            </h3>
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              Popular Coffee
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Our Featured Drinks
             </h2>
-            <p className="text-gray-600 max-w-3xl">
-              Explore our most loved coffee varieties. Each blend is carefully selected 
-              to deliver exceptional flavor and aroma. From light Ethiopian roasts to 
-              bold Sumatran beans, find your perfect cup.
+            <p className="text-gray-800 max-w-3xl mx-auto">
+              From our bold Espresso Origins to smooth Mojo House Blend — explore
+              flavors inspired by cultures across the world.
             </p>
           </div>
 
-          {/* Product Grid */}
+          {/* Featured Drinks Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            {products?.slice(0, 4).map((product) => (
-              <ProductCard key={product._id} product={product} />
+            {featuredDrinks.map((drink) => (
+              <div
+                key={drink.id}
+                className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+              >
+                <div className="relative h-64 w-full">
+                  <Image
+                    src={drink.image}
+                    alt={drink.name}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-4 text-center">
+                  <Link href="/products">
+                    <button className="w-full bg-white text-gray-900 px-6 py-3 rounded-md border-2 border-gray-900 hover:bg-gray-900 hover:text-white transition-colors font-semibold">
+                      Add to cart
+                    </button>
+                  </Link>
+                </div>
+              </div>
             ))}
-          </div>
-
-          <div className="text-center">
-            <Link href="/products">
-              <button className="border-2 border-gray-900 text-gray-900 px-8 py-3 rounded-full hover:bg-gray-900 hover:text-white transition-colors font-semibold">
-                View All Products
-              </button>
-            </Link>
           </div>
         </div>
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-16 px-4 md:px-8 bg-gray-50">
+      <section className="py-20 px-4 bg-[#4A3933]">
         <div className="max-w-7xl mx-auto">
-          <h3 className="text-3xl font-bold text-gray-900 mb-12">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-16 text-center">
             Why Choose Us?
-          </h3>
+          </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Feature 1 */}
-            <div className="bg-white rounded-lg overflow-hidden shadow-sm">
-              <div className="bg-gray-900 h-48 flex items-center justify-center">
-                <div className="bg-white rounded p-4">
-                  <svg className="w-20 h-20 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6z" />
-                  </svg>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {/* Feature 1 - Sustainably Sourced */}
+            <div className="text-center text-white">
+              <div className="mb-6 flex justify-center">
+                <div className="w-24 h-24 relative">
+                  <Image
+                    src="/sustain.png"
+                    alt="Sustainably Sourced"
+                    fill
+                    className="object-contain"
+                  />
                 </div>
               </div>
-              <div className="p-6">
-                <h4 className="text-xl font-bold text-gray-900 mb-2">
-                  Sustainably Sourced
-                </h4>
-                <p className="text-gray-600">
-                  We partner directly with ethical coffee farms, ensuring fair trade 
-                  practices and environmental sustainability in every bean.
-                </p>
-              </div>
+              <h3 className="text-2xl font-bold mb-4">Sustainably Sourced</h3>
+              <p className="text-gray-300">
+                Supporting local farmers and eco-friendly growing practices.
+              </p>
             </div>
 
-            {/* Feature 2 */}
-            <div className="bg-white rounded-lg overflow-hidden shadow-sm">
-              <div className="bg-gray-900 h-48 flex items-center justify-center">
-                <div className="bg-white rounded p-4">
-                  <svg className="w-20 h-20 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
-                    <path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3z" />
-                  </svg>
+            {/* Feature 2 - Freshly Roasted */}
+            <div className="text-center text-white">
+              <div className="mb-6 flex justify-center">
+                <div className="w-24 h-24 relative">
+                  <Image
+                    src="/roast.png"
+                    alt="Freshly Roasted"
+                    fill
+                    className="object-contain"
+                  />
                 </div>
               </div>
-              <div className="p-6">
-                <h4 className="text-xl font-bold text-gray-900 mb-2">
-                  Freshly Roasted
-                </h4>
-                <p className="text-gray-600">
-                  Every order is roasted to perfection within 24 hours of shipping, 
-                  guaranteeing maximum freshness and flavor in every cup.
-                </p>
-              </div>
+              <h3 className="text-2xl font-bold mb-4">Freshly Roasted</h3>
+              <p className="text-gray-300">
+                Every batch is roasted in small quantities for unmatched freshness.
+              </p>
             </div>
 
-            {/* Feature 3 */}
-            <div className="bg-white rounded-lg overflow-hidden shadow-sm">
-              <div className="bg-gray-900 h-48 flex items-center justify-center">
-                <div className="bg-white rounded p-4">
-                  <svg className="w-20 h-20 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
-                    <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
+            {/* Feature 3 - Expertly Crafted */}
+            <div className="text-center text-white">
+              <div className="mb-6 flex justify-center">
+                <div className="w-24 h-24 relative">
+                  <Image
+                    src="/expert.png"
+                    alt="Freshly Roasted"
+                    fill
+                    className="object-contain"
+                  />
                 </div>
               </div>
-              <div className="p-6">
-                <h4 className="text-xl font-bold text-gray-900 mb-2">
-                  Expertly Crafted
-                </h4>
-                <p className="text-gray-600">
-                  Our master roasters bring decades of experience, carefully developing 
-                  each roast profile to highlight unique flavor characteristics.
-                </p>
-              </div>
+              <h3 className="text-2xl font-bold mb-4">Expertly Crafted</h3>
+              <p className="text-gray-300">
+                Our baristas and blenders bring passion and precision to every cup.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Newsletter Section */}
-      <section className="py-16 px-4 md:px-8 bg-gradient-to-r from-gray-400 to-gray-500">
+      <section className="py-20 px-4 bg-[#8B9D83]">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="text-white">
-              <h2 className="text-3xl font-bold mb-4">
-                Get new updates and discount offers sign up now!
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                Get new updates and discount offers, Sign up now!
               </h2>
-              <p className="text-gray-100 mb-6">
-                Join our coffee community and be the first to know about new arrivals, 
-                exclusive blends, and special promotions. Plus, get 10% off your first order!
+              <p className="text-gray-100 mb-8 leading-relaxed">
+                Be part of something special. Subscribe to Mojo Coffee Blend for
+                early access to new blends, exclusive discounts, and
+                behind-the-scenes stories from our roasters and baristas. We love
+                sharing our journey and connecting with those who share our passion
+                for coffee, culture, and sustainability.
               </p>
-              <form className="bg-white rounded-lg p-6">
-                <input 
-                  type="email" 
-                  placeholder="Enter your email"
-                  className="w-full px-4 py-2 mb-4 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-amber-500"
+              <form className="bg-white rounded-lg p-2 flex gap-2">
+                <input
+                  type="email"
+                  placeholder="Your email address"
+                  className="flex-1 px-4 py-3 border-none focus:outline-none rounded"
                 />
-                <button 
+                <button
                   type="submit"
-                  className="w-full border-2 border-gray-900 text-gray-900 px-6 py-2 rounded hover:bg-gray-900 hover:text-white transition-colors font-semibold"
+                  className="bg-[#4A3933] text-white px-8 py-3 rounded hover:bg-[#3a2923] transition-colors font-semibold whitespace-nowrap"
                 >
                   Keep Me Alerted
                 </button>
@@ -163,12 +202,13 @@ export default function Home() {
             </div>
 
             <div className="flex justify-center">
-              <div className="bg-gray-300 rounded-2xl p-12 w-80 h-80 flex items-center justify-center">
-                <div className="bg-white rounded-lg p-8">
-                  <svg className="w-32 h-32 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
-                  </svg>
-                </div>
+              <div className="relative w-150 h-150 overflow-hidden">
+                <Image
+                  src="/updates2.png"
+                  alt="Coffee"
+                  fill
+                  className="object-cover"
+                />
               </div>
             </div>
           </div>
