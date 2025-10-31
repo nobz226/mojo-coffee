@@ -12,7 +12,7 @@ export default function Footer() {
           <div className="flex flex-col items-start">
             <div className="relative w-32 h-32 mb-2">
               <Image
-                src="/logo-white.png"
+                src="/mojo-logo-white.svg"
                 alt="Mojo Coffee"
                 fill
                 className="object-contain"

@@ -22,7 +22,7 @@ export default function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center">
           <Image
-            src="/logo-header.svg"
+            src="/mojo-logo-white.svg"
             alt="Mojo Coffee"
             width={120}
             height={60}

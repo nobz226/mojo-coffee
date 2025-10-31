@@ -4,6 +4,7 @@ import { useQuery } from "convex/react";
 import { api } from "../../../convex/_generated/api";
 import ProductCard from "@/components/ProductCard";
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useMemo } from "react";
 
 export default function ProductsPage() {
@@ -181,17 +182,49 @@ export default function ProductsPage() {
         </div>
       )}
 
-      {/* Footer Slogan Section */}
-      <div className="mt-16 py-12 bg-[#E8D5C4] text-center rounded">
-        <h2 className="text-xl md:text-2xl text-gray-700 font-medium mb-6 px-4">
-          Slogan: Lorem ipsum dolor sit amet, consectetur<br />
-          adipiscing elit. Mauris vel augue placerat, interdum<br />
-          sapien
-        </h2>
-        <button className="px-8 py-3 border-2 border-gray-600 text-gray-700 rounded hover:bg-gray-100">
-          [BUTTON]
-        </button>
-      </div>
+      {/* Newsletter Section - Full Width */}
+      <section className="py-20 px-4 bg-[#8B9D83] -mx-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="text-white">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                Get new updates and discount offers, Sign up now!
+              </h2>
+              <p className="text-gray-100 mb-8 leading-relaxed">
+                Be part of something special. Subscribe to Mojo Coffee Blend for
+                early access to new blends, exclusive discounts, and
+                behind-the-scenes stories from our roasters and baristas. We love
+                sharing our journey and connecting with those who share our passion
+                for coffee, culture, and sustainability.
+              </p>
+              <form className="bg-white rounded-lg p-2 flex gap-2">
+                <input
+                  type="email"
+                  placeholder="Your email address"
+                  className="flex-1 px-4 py-3 border-none focus:outline-none rounded"
+                />
+                <button
+                  type="submit"
+                  className="bg-[#4A3933] text-white px-8 py-3 rounded hover:bg-[#3a2923] transition-colors font-semibold whitespace-nowrap"
+                >
+                  Keep Me Alerted
+                </button>
+              </form>
+            </div>
+
+            <div className="flex justify-center">
+              <div className="relative w-80 h-80 rounded-full overflow-hidden bg-gray-200">
+                <Image
+                  src="/updates2.png"
+                  alt="Coffee"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
