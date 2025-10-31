@@ -20,7 +20,7 @@ export const seed = mutation({
         name: "Winter Spice Mocha",
         description: "Rich mocha topped with whipped cream and a cinnamon stick. Warm spices of cinnamon and nutmeg create the perfect winter comfort drink.",
         price: 699,
-        imageUrl: "https://images.unsplash.com/photo-1514066558159-fc8c737ef259?w=800&q=80",
+        imageUrl: "https://plus.unsplash.com/premium_photo-1671559021617-63260def0504?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bW9jaGElMjBjb2ZmZWV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=800",
         origin: "Brazil",
         roastType: "Dark",
         dietaryProfile: {
@@ -90,7 +90,7 @@ export const seed = mutation({
         name: "Matcha Snow Latte",
         description: "Japanese matcha green tea latte with steamed milk and a snow-like foam topping. Earthy, creamy, and beautifully balanced.",
         price: 699,
-        imageUrl: "https://images.unsplash.com/photo-1515823064-d6e0c04616a7?w=800&q=80",
+        imageUrl: "https://images.unsplash.com/photo-1515823064-d6e0c04616a7?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2671",
         origin: "Japan",
         roastType: "Light",
         dietaryProfile: {
