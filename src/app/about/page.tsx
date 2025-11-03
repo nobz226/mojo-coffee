@@ -111,7 +111,7 @@ export default function AboutPage() {
       {/* Bottom Banner Section */}
       <div className="bg-[#8B9D83] py-20 px-4 text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-          More Than Coffee — It's a Connection.
+          More Than Coffee — Its a Connection.
         </h2>
         <p className="text-lg text-white max-w-4xl mx-auto leading-relaxed">
           From our first roast to our latest seasonal blend, Mojo has remained dedicated 
