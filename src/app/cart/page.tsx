@@ -109,7 +109,7 @@ export default function CartPage() {
                             }
                             className="w-8 h-8 border-2 border-gray-400 rounded-full flex items-center justify-center hover:bg-gray-100"
                           >
-                            −
+                            
                           </button>
                           <span className="w-12 text-center font-semibold">
                             {item.quantity}
@@ -182,38 +182,49 @@ export default function CartPage() {
         </div>
       </div>
 
-      {/* Newsletter Section */}
-      <div className="bg-gray-200 py-16 px-8 rounded">
-        <div className="max-w-2xl">
-          <h2 className="text-2xl font-bold text-white mb-4">
-            Get new updates and discount
-            <br />
-            offers sign up now!
-          </h2>
-          <p className="text-white text-sm mb-6 opacity-80">
-            Interdum et malesuada fames ac ante ipsum primis in
-            <br />
-            faucibus. Praesent malesuada augue at velit posuere
-            <br />
-            consectetur
-          </p>
-          <div className="flex gap-2">
-            <input
-              type="email"
-              placeholder=""
-              className="flex-1 px-4 py-3 border-2 border-gray-400 rounded"
-            />
-            <button className="px-8 py-3 border-2 border-gray-600 text-gray-700 bg-white rounded hover:bg-gray-100">
-              Keep Me Alerted
-            </button>
+      {/* Newsletter Section - Same as Homepage */}
+      <section className="py-20 px-4 bg-[#8B9D83] -mx-8 rounded-lg">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="text-white">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                Get new updates and discount offers, Sign up now!
+              </h2>
+              <p className="text-gray-100 mb-8 leading-relaxed">
+                Be part of something special. Subscribe to Mojo Coffee Blend for
+                early access to new blends, exclusive discounts, and
+                behind-the-scenes stories from our roasters and baristas. We love
+                sharing our journey and connecting with those who share our passion
+                for coffee, culture, and sustainability.
+              </p>
+              <form className="bg-white rounded-lg p-2 flex gap-2">
+                <input
+                  type="email"
+                  placeholder="Your email address"
+                  className="flex-1 px-4 py-3 border-none focus:outline-none rounded"
+                />
+                <button
+                  type="submit"
+                  className="bg-[#4A3933] text-white px-8 py-3 rounded hover:bg-[#3a2923] transition-colors font-semibold whitespace-nowrap"
+                >
+                  Keep Me Alerted
+                </button>
+              </form>
+            </div>
+
+            <div className="flex justify-center">
+              <div className="relative w-80 h-80 rounded-full overflow-hidden bg-gray-200">
+                <Image
+                  src="/updates2.png"
+                  alt="Coffee"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
           </div>
         </div>
-        <div className="mt-8 flex justify-end">
-          <div className="w-48 h-48 bg-white rounded-lg flex items-center justify-center">
-            <div className="text-gray-400 text-6xl">📷</div>
-          </div>
-        </div>
-      </div>
+      </section>
     </div>
   );
 }
